@@ -1,0 +1,127 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.sap.build.ba293bd41-us_1.manageWorkOrder.controller.Page1" xmlns="sap.m">
+	<Page title="Work Order List" showHeader="true" showFooter="true" showNavButton="false" navButtonPress="_onPageNavButtonPress">
+		<content>
+			<RadioButtonGroup id="radlist" columns="5" select="radioButtonSelect" visible="false">
+				<buttons>
+					<RadioButton text="All"/>
+					<RadioButton text="Low"/>
+					<RadioButton text="Medium"/>
+					<RadioButton text="High"/>
+					<RadioButton text="Very High"/>
+				</buttons>
+			</RadioButtonGroup>
+			<!--<List id="mainList" mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All"
+				growing="true" growingThreshold="20" growingScrollToLoad="true" visible="true" busyIndicatorDelay="5000" itemPress="_onObjectListItemPress"
+				items="{path:'/WorkOrderListSet', templateShareable:true}">
+				<headerToolbar>
+					<Toolbar enabled="true" visible="true" width="" design="Solid">
+						<content>
+							<SearchField placeholder="Search" liveChange="ons" showSearchButton="true" visible="true" width="100%"/>
+							<Button icon="sap-icon://sort" press="onSort"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem id="itemlist1" intro="{WorkOrderNo}" title="{Description}" number="{Priority}" numberUnit=""
+						numberState="{parts:[{path: 'Priority'}], formatter:'.vstatus'}" type="Active" selected="false" showMarkers="false">
+						<attributes>
+							<ObjectAttribute title="Created On" text="{CreatedOn}" active="false" visible="true"/>
+							<ObjectAttribute title="Order Type" text="{OrderType}" active="false" visible="true"/>
+						</attributes>
+						<firstStatus>
+							<ObjectStatus text="{SystStatus}" state="None" visible="true"/>
+						</firstStatus>
+						<secondStatus>
+							<ObjectStatus title="User Status" text="Pending" state="Warning" visible="true"/>
+						</secondStatus>
+					</ObjectListItem>
+				</items>
+			</List>-->
+			<Table id="Table" width="100%" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20"
+				growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'/listdata', templateShareable:true}" updateFinished="render">
+				<infoToolbar>
+					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<content>
+							<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+						<content>
+							<Title id="counttable" text="Items" titleStyle="H5" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+							<ToolbarSpacer width=""/>
+							<SearchField placeholder="Search" showSearchButton="true" liveChange="onLiveChange" visible="true" width="auto"/>
+							<Button text="Advanced Search" visible="true" width="auto" type="Emphasized" press="adv"></Button>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Work Order No." width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="30%" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Created On" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Order Type" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="System Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="User Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Right" vAlign="Top" minScreenWidth="Phone" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Priority" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation">
+						<cells>
+							<ObjectIdentifier id="inpNotif" title="{WorkOrderNo}" text="" titleActive="false" visible="true"/>
+							<Text id="inpDesc" text="{Description}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text id="inpWorkCent" text="{CreatedOn}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text id="inpTech" text="{OrderType}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text id="inpReport" text="{SystStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<Text id="inpStat" text="{UserStatus}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="false"/>
+							<ObjectStatus id="inpPrity" title="" text="{priority}" state="{prioritystate}" visible="true"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer/>
+		<headerContent>
+			<!--<Button text="" type="Default" icon="{= ${FclRouter>/expandIcon/img}}" iconFirst="true" width="auto" enabled="true"-->
+			<!--	visible="{= ${fclButton>/visible}}" tooltip="{= ${FclRouter>/expandIcon/tooltip}}" iconDensityAware="false" class="fcl-resizeButton-js"-->
+			<!--	press="_onExpandButtonPress"/>-->
+			<Button text="" type="Default" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="false"
+				tooltip="Close Column" iconDensityAware="false" class="fcl-closeButton-js" press="_onCloseButtonPress"/>
+		</headerContent>
+	</Page>
+</mvc:View>
